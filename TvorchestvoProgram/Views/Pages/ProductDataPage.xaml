@@ -1,0 +1,62 @@
+﻿<Page x:Class="TvorchestvoProgram.Views.Pages.ProductDataPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TvorchestvoProgram.Views.Pages"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductDataPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
+            <Button Name="BackBtn" Click="BackBtn_Click" Content="Назад" Width="100"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Поиск:"></TextBlock>
+            <TextBox Name="txbSearch" SelectionChanged="txbSearch_SelectionChanged" Width="200"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <TextBlock Text="Тип:"></TextBlock>
+            <ComboBox Name="cmbSearchType" SelectionChanged="cmbSearchType_SelectionChanged" Width="100"></ComboBox>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <ListView Name="ProductDataListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding GetImage}" Grid.Column="0" Width="150" Height="150"></Image>
+                            <StackPanel Grid.Column="1">
+                                <Label Content="{Binding ProductName}" ContentStringFormat="Наименование товара: {0}"></Label>
+                                <Label Content="{Binding ProductDescription}" ContentStringFormat="Описание: {0}"></Label>
+                                <Label Content="{Binding ProductManufacturer}" ContentStringFormat="Производитель: {0}"></Label>
+                                <Label Content="{Binding ProductCost}" ContentStringFormat="Цена: {0}"></Label>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <Label Content="{Binding ProductQuantityInStock}"  ContentStringFormat="Количество на складе: {0}"></Label>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView> 
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Name="AddBtn" Content="Добавить" Click="AddBtn_Click" Width="200"></Button>
+                <Button Name="EditbTN" Content="Редактировать" Click="EditbTN_Click" Width="200" Margin="15,0,15,0"></Button>
+                <Button Name="DeleteBtn" Content="Удалить" Click="DeleteBtn_Click" Width="200"></Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
